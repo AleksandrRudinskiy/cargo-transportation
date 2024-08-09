@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,4 +24,6 @@ public class Transport {
     private int type;
     @Column(name = "maintenance_date")
     private LocalDate maintenanceDate; // дата последего техобслуживания
+    @Transient
+    private List<Integer> permittedCargoTypes;
 }

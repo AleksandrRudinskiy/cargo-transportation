@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class LoadingController {
     private final LoadingService loadingService;
+
     @PostMapping
     public Loading add(@RequestHeader(value = "User-Id") long userId,
                        @RequestParam long cargoId,

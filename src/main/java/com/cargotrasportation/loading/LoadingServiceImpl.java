@@ -23,7 +23,7 @@ public class LoadingServiceImpl implements LoadingService {
         // проверить наличие в БД пользователя, груза, транспорта
         Cargo cargo = cargoRepository.findById(cargoId).get();
         Transport transport = transportRepository.findById(transportId).get();
-        if (cargo.getType() == 1 && transport.getType() == 1) {
+        if (!transport.getPermittedCargoTypes().contains(cargo.getType())) {
             throw new CantTransportGasOnAirplaneException("Нельзя газ перевозить в самолете!");
         }
         return loadingRepository.save(loading);
